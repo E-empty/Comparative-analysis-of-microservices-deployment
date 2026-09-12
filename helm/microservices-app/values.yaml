@@ -38,7 +38,7 @@ services:
     replicas: 2
     image:
       repository: "ghcr.io/e-empty/gitops-comparison-gateway-service"
-      tag: "6bf9df76eff08a02c97bec9c254232c5a527dcee"
+      tag: "800a23bf6a35187603a6d86ede8cc34027cfb1c6"
       pullPolicy: IfNotPresent
     containerPort: 8000
     service:
@@ -79,7 +79,7 @@ services:
     replicas: 2
     image:
       repository: "ghcr.io/e-empty/gitops-comparison-users-service"
-      tag: "6bf9df76eff08a02c97bec9c254232c5a527dcee"
+      tag: "800a23bf6a35187603a6d86ede8cc34027cfb1c6"
       pullPolicy: IfNotPresent
     containerPort: 8000
     service:
@@ -120,7 +120,7 @@ services:
     replicas: 2
     image:
       repository: "ghcr.io/e-empty/gitops-comparison-orders-service"
-      tag: "6bf9df76eff08a02c97bec9c254232c5a527dcee"
+      tag: "800a23bf6a35187603a6d86ede8cc34027cfb1c6"
       pullPolicy: IfNotPresent
     containerPort: 8000
     service:
