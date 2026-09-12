@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: microservices-app
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: "<YOUR_GIT_REPOSITORY_URL>"
+    targetRevision: "<YOUR_GIT_REVISION>"
+    path: helm/microservices-app
+    helm:
+      releaseName: microservices-app
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: test-argocd
+  syncPolicy:
+    automated:
+      allowEmpty: false
+      prune: true
+      selfHeal: true
+    retry:
+      # Match Flux upgrade.remediation.retries=0. Failed-release recovery is
+      # initiated by the experiment's next Git revision, not an internal retry.
+      limit: 0
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
