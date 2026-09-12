@@ -38,9 +38,10 @@ niezależnie zmienić:
 - requests/limits;
 - pełne parametry liveness/readiness probe.
 
-Globalne `imageRegistry` i `imageOwner` pozwalają zastąpić trzy repozytoria
-jednym ustawieniem. Ingress ma własne `enabled`, `className`, annotations, hosts,
-paths i TLS. Schema JSON wcześnie odrzuca błędne typy i brak wymaganych pól.
+Globalne `imageRegistry`, `imageOwner` i `imagePrefix` pozwalają wyliczyć trzy
+repozytoria bez powtarzania pełnych adresów. Ingress ma własne `enabled`,
+`className`, annotations, hosts, paths i TLS. Schema JSON wcześnie odrzuca błędne
+typy i brak wymaganych pól.
 
 Walidacja bez klastra:
 

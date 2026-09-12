@@ -72,12 +72,13 @@ otherwise the explicit per-service repository is used.
 {{- define "microservices-app.image" -}}
 {{- $registry := .root.Values.global.imageRegistry | default "" -}}
 {{- $owner := .root.Values.global.imageOwner | default "" -}}
+{{- $prefix := .root.Values.global.imagePrefix | default "" -}}
 {{- if ne (empty $registry) (empty $owner) -}}
 {{- fail "global.imageRegistry and global.imageOwner must be set together" -}}
 {{- end -}}
 {{- $repository := required (printf "services.%s.image.repository is required" .key) .service.image.repository -}}
 {{- if and $registry $owner -}}
-{{- $repository = printf "%s/%s/%s" (trimSuffix "/" $registry) (trimAll "/" $owner) .service.name -}}
+{{- $repository = printf "%s/%s/%s%s" (trimSuffix "/" $registry) (trimAll "/" $owner) $prefix .service.name -}}
 {{- end -}}
 {{- printf "%s:%s" $repository (required (printf "services.%s.image.tag is required" .key) .service.image.tag) -}}
 {{- end }}

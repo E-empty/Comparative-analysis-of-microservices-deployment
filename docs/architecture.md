@@ -41,9 +41,9 @@ wystawianą przez opcjonalny Ingress.
 ### Dystrybucja
 
 Każdy obraz jest budowany z kontekstu `app/`, uruchamiany jako UID/GID `10001` i
-publikowany przez CI pod tagiem SHA commita. Domyślne wartości chartu wskazują
-pakiety GHCR używane w badaniu; podczas wdrażania forka należy zmienić
-właściciela, repozytoria i tagi obrazów.
+publikowany przez CI pod tagiem SHA commita. Prefiks `gitops-comparison-`
+oddziela pakiety badania od innych obrazów na tym samym koncie GHCR. Podczas
+wdrażania forka należy zmienić właściciela, repozytoria i tagi obrazów.
 
 ### Deklaracja Kubernetes
 

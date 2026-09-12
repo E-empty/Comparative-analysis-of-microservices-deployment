@@ -53,7 +53,7 @@ uzasadnienie znajduje się w [metodyce](docs/methodology.md).
 ├── .github/workflows/       # test/build/push oraz niezależny lint
 ├── analysis/                # statystyki CSV i testy analizatora
 ├── app/
-│   ├── common/              # wspólna funkcja FastAPI
+│   ├── common/              # wspólna fabryka FastAPI
 │   ├── gateway-service/     # osobny entrypoint, zależności i obraz
 │   ├── users-service/
 │   └── orders-service/
@@ -143,9 +143,9 @@ Odpowiedź `/version` ma postać:
 Workflow publikuje przy pushu do `main`:
 
 ```text
-ghcr.io/<github-owner-lowercase>/gateway-service:<git-sha>
-ghcr.io/<github-owner-lowercase>/users-service:<git-sha>
-ghcr.io/<github-owner-lowercase>/orders-service:<git-sha>
+ghcr.io/<github-owner-lowercase>/gitops-comparison-gateway-service:<git-sha>
+ghcr.io/<github-owner-lowercase>/gitops-comparison-users-service:<git-sha>
+ghcr.io/<github-owner-lowercase>/gitops-comparison-orders-service:<git-sha>
 ```
 
 Po pierwszym udanym workflow ustaw w `helm/microservices-app/values.yaml`:
@@ -154,6 +154,7 @@ Po pierwszym udanym workflow ustaw w `helm/microservices-app/values.yaml`:
 global:
   imageRegistry: ghcr.io
   imageOwner: <YOUR_GITHUB_USERNAME_LOWERCASE>
+  imagePrefix: gitops-comparison-
 ```
 
 oraz tag pierwszego opublikowanego SHA w każdym `services.*.image.tag`. Wartość

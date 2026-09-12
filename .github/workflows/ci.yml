@@ -90,7 +90,8 @@ jobs:
         env:
           OWNER: ${{ github.repository_owner }}
           SERVICE: ${{ matrix.service }}
-        run: echo "image=ghcr.io/${OWNER,,}/${SERVICE}" >> "$GITHUB_OUTPUT"
+          IMAGE_PREFIX: gitops-comparison-
+        run: echo "image=ghcr.io/${OWNER,,}/${IMAGE_PREFIX}${SERVICE}" >> "$GITHUB_OUTPUT"
 
       - name: Protect the immutable SHA tag
         id: publish

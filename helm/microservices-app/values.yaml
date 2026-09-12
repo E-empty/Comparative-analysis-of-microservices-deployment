@@ -5,10 +5,11 @@ fullnameOverride: ""
 
 global:
   # When both values are set, image repositories are derived as
-  # <imageRegistry>/<imageOwner>/<service.name>. Per-service repositories are
-  # used otherwise.
+  # <imageRegistry>/<imageOwner>/<imagePrefix><service.name>. Per-service
+  # repositories are used otherwise.
   imageRegistry: "ghcr.io"
   imageOwner: "e-empty"
+  imagePrefix: "gitops-comparison-"
 
 imagePullSecrets: []
 
@@ -36,7 +37,7 @@ services:
     name: gateway-service
     replicas: 2
     image:
-      repository: "ghcr.io/e-empty/gateway-service"
+      repository: "ghcr.io/e-empty/gitops-comparison-gateway-service"
       tag: "6bf9df76eff08a02c97bec9c254232c5a527dcee"
       pullPolicy: IfNotPresent
     containerPort: 8000
@@ -77,7 +78,7 @@ services:
     name: users-service
     replicas: 2
     image:
-      repository: "ghcr.io/e-empty/users-service"
+      repository: "ghcr.io/e-empty/gitops-comparison-users-service"
       tag: "6bf9df76eff08a02c97bec9c254232c5a527dcee"
       pullPolicy: IfNotPresent
     containerPort: 8000
@@ -118,7 +119,7 @@ services:
     name: orders-service
     replicas: 2
     image:
-      repository: "ghcr.io/e-empty/orders-service"
+      repository: "ghcr.io/e-empty/gitops-comparison-orders-service"
       tag: "6bf9df76eff08a02c97bec9c254232c5a527dcee"
       pullPolicy: IfNotPresent
     containerPort: 8000
