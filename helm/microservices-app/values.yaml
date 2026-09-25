@@ -38,7 +38,7 @@ services:
     replicas: 2
     image:
       repository: "ghcr.io/e-empty/gitops-comparison-gateway-service"
-      tag: "128f760084e1f56260a43329bd79ff226431d7d8"
+      tag: "800a23bf6a35187603a6d86ede8cc34027cfb1c6"
       pullPolicy: IfNotPresent
     containerPort: 8000
     service:
@@ -46,7 +46,7 @@ services:
       port: 80
       annotations: {}
     env:
-      APP_VERSION: "1.1.0"
+      APP_VERSION: "1.0.0"
       APP_FAILURE_MODE: "none"
       EXPERIMENT_CONFIG: "baseline"
     resources:
